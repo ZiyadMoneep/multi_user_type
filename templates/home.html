@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}multi user App | Home{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}! You are {{ user.age }} years old.
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a> |
+        <br><br>
+        <a href="{% url 'accounts:recruiter_signup' %}">Recruiter Sign Up</a> |
+        <br><br>
+        <a href="{% url 'accounts:applicant_signup' %}">Applicant Sign Up</a> |
+        <br> <br>
+        <a href="{% url 'accounts:secretary_signup' %}">Secretary Sign Up</a> |
+        <br><br>
+        <a href="{% url 'accounts:supervisor_signup' %}">Supervisor Sign Up</a> |
+    {% endif %}
+{% endblock content %}
